@@ -9,6 +9,10 @@
     --yellow: #ffeb9d;
 }
 
+.container{
+    max-width: 95%;
+}
+
 .green{
     color: var(--green);
 }
@@ -43,4 +47,11 @@ li a.nav-link:hover{
     color: var(--orange);
     transform: scale(1.05);
     transition: ease-out 0.15s;
+}
+
+
+/*---------------------------------------------- CAROUSEL ---------------------------------------------------------------------------*/
+
+.carousel-item img{
+    height: 30%;
 }
