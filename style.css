@@ -1,3 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 :root {
-    
+    --green: #afd189;
+    --orange: #f4a261;
+    --yellow: #ffeb9d;
+}
+
+.green{
+    color: var(--green);
+}
+
+.bg-green{
+    background-color: var(--green);
+}
+
+.orange{
+    color: var(--orange);
+}
+
+.bg-orange{
+    background-color: var(--orange);
+}
+
+.yellow{
+    color: var(--yellow);
+}
+
+.bg-yellow{
+    background-color: var(--yellow);
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+/*---------------------------------------------- NAVBAR ---------------------------------------------------------------------------*/
+
+li a.nav-link:hover{
+    color: var(--orange);
+    transform: scale(1.05);
+    transition: ease-out 0.15s;
 }
