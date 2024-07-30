@@ -9,10 +9,12 @@
     --green: #afd189;
     --orange: #f4a261;
     --yellow: #ffeb9d;
+    --fontPlayfair: "Playfair Display";
+    --fontNunito: 'Nunito Sans';
 }
 
 p{    
-    font-family: 'Nunito Sans';
+    font-family: var(--fontNunito) ;
 }
 
 .container{
@@ -56,8 +58,17 @@ p{
     font-size: x-large;
 }
 
-.border-b{
+.border-bottom-green{
     border-bottom: 1px solid #afd189;
+}
+
+
+.border-top-black{
+    border-top: 1px solid black;
+}
+
+.border-black{
+    border: 1px solid black;
 }
 
 /*---------------------------------------------- NAVBAR ---------------------------------------------------------------------------*/
@@ -92,4 +103,72 @@ li a.nav-link:hover{
 
 .img-history2{
     float: right;
+}
+
+/*---------------------------------------------- CARD ---------------------------------------------------------------------------*/
+.card{
+    background-color: var(--green);
+    justify-content: center;
+    height: 400px;
+    text-align: center;
+    margin: 10px;
+}
+
+.card img {
+    max-width: 55%;
+    max-height:50%;
+    margin-top: 5px;
+}
+.card-product-price{
+    font-family: var(--fontNunito) ;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--fontPlayfair);
+    max-height: 45%;
+}
+
+.number-input{
+    display: flex;
+    border: 1px solid black;
+    border-radius: 20px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    max-width: 50%;
+    min-height: 25px;
+    font-size: larger;
+}
+
+.input-quantity-product{
+    border: none;
+    max-width: 50%;
+    text-align: center;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    outline: none;
+}
+
+.number-input button{
+    background-color: white;
+    border: none;
+    width: 25%;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.btn-buy{
+    background-color: white;
+    border: 2px solid black;
+    margin: 10px;
+    font-family: var(--fontNunito);
+    width: 70%;
+    border-radius: 20px;
+    text-transform: uppercase;
 }
