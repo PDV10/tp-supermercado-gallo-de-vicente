@@ -64,11 +64,12 @@ p{
 
 
 .border-top-black{
-    border-top: 1px solid black;
+    width: 99%;
+    border-top: 1.2px solid rgba(117, 117, 117, 0.645);
 }
 
-.border-black{
-    border: 1px solid black;
+.border-green{
+    border: 2px solid #afd189!important;
 }
 
 /*---------------------------------------------- NAVBAR ---------------------------------------------------------------------------*/
@@ -112,6 +113,7 @@ li a.nav-link:hover{
     height: 400px;
     text-align: center;
     margin: 10px;
+    background-color: rgb(239, 239, 239);
 }
 
 .card img {
@@ -131,7 +133,14 @@ li a.nav-link:hover{
     justify-content: center;
     align-items: center;
     font-family: var(--fontPlayfair);
-    max-height: 45%;
+    max-height: 45%;  
+}
+
+.card:hover{
+    transform: scale(1.03);
+    z-index: 1000;
+    transition: ease 0.4s;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .number-input{
@@ -165,10 +174,15 @@ li a.nav-link:hover{
 
 .btn-buy{
     background-color: white;
-    border: 2px solid black;
+    border: 2px solid var(--green);
     margin: 10px;
     font-family: var(--fontNunito);
-    width: 70%;
-    border-radius: 20px;
+    width: 60%;
+    border-radius: 25px;
     text-transform: uppercase;
+}
+
+.btn-buy:hover{
+    color: var(--green);
+    font-weight: 600;
 }
