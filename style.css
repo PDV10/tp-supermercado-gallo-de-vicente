@@ -41,6 +41,11 @@
     text-decoration: underline;
 }
 
+.destacated{
+    color: var(--green);
+    font-weight: bold;
+}
+
 /*---------------------------------------------- NAVBAR ---------------------------------------------------------------------------*/
 
 li a.nav-link:hover{
@@ -51,7 +56,26 @@ li a.nav-link:hover{
 
 
 /*---------------------------------------------- CAROUSEL ---------------------------------------------------------------------------*/
+.carousel{
+    width: 100%;
+}
 
 .carousel-item img{
-    height: 30%;
+    width: 100%;
+    height: 300px;
+}
+
+.img-history,.img-history2{
+    width: 400px;
+    shape-outside: margin-box;
+    float: left;
+}
+
+.img-history{
+    float: left;
+    margin: 5px;
+}
+
+.img-history2{
+    float: right;
 }
