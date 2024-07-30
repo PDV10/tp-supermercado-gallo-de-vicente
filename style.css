@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@1,300&family=Playfair+Display:wght@500&family=Playfair:wght@600&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -7,6 +9,10 @@
     --green: #afd189;
     --orange: #f4a261;
     --yellow: #ffeb9d;
+}
+
+p{    
+    font-family: 'Nunito Sans';
 }
 
 .container{
@@ -44,6 +50,10 @@
 .destacated{
     color: var(--green);
     font-weight: bold;
+}
+
+.first-letter-style::first-letter{
+    font-size: x-large;
 }
 
 /*---------------------------------------------- NAVBAR ---------------------------------------------------------------------------*/
