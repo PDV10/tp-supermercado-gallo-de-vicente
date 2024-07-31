@@ -4,11 +4,15 @@
     margin: 0;
     padding: 0;
 }
+body{
+    background-color: var(--gray);
+}
 
 :root {
     --green: #afd189;
     --orange: #f4a261;
     --yellow: #ffeb9d;
+    --gray: #edede9;
     --fontPlayfair: "Playfair Display";
     --fontNunito: 'Nunito Sans';
 }
@@ -23,7 +27,6 @@ h1,h2,h3,h4,h5,h6{
     font-family: var(--fontPlayfair);
     text-align: center;
     color: var(--green);
-    margin: 2%;
 }
 
 .container{
@@ -81,6 +84,7 @@ h1,h2,h3,h4,h5,h6{
 
 .border-green{
     border: 2px solid #afd189!important;
+    border-radius: 20px;
 }
 
 /*---------------------------------------------- NAVBAR ---------------------------------------------------------------------------*/
