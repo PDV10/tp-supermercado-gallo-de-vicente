@@ -15,6 +15,15 @@
 
 p{    
     font-family: var(--fontNunito) ;
+    font-size: medium;
+    margin: 2%;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: var(--fontPlayfair);
+    text-align: center;
+    color: var(--green);
+    margin: 2%;
 }
 
 .container{
@@ -56,6 +65,8 @@ p{
 
 .first-letter-style::first-letter{
     font-size: x-large;
+    font-family: var(--fontPlayfair);
+
 }
 
 .border-bottom-green{
