@@ -16,6 +16,8 @@ body{
     --orange: #f4a261;
     --yellow: #ffeb9d;
     --gray: #edede9;
+    --white: rgb(249, 246, 246);
+    --black: rgb(20, 20, 20);
     --fontPlayfair: "Playfair Display";
     --fontNunito: 'Nunito Sans';
 }
@@ -30,6 +32,29 @@ h1,h2,h3,h4,h5,h6{
     font-family: var(--fontPlayfair);
     text-align: center;
     color: var(--green);
+}
+
+.list-product{
+    max-width: 100%;
+    list-style: none;
+    background-color: var(--white);
+}
+
+li{
+    font-family: var(--fontNunito);
+    font-size: medium;
+    margin: 5%;
+}
+
+li a.element-product{
+    color:  var(--black);
+    text-decoration: none;
+}
+
+li a.element-product:hover{
+    color: var(--green);
+    transform: scale(1.05);
+    transition: ease-out 0.15s;
 }
 
 .container{
