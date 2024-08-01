@@ -34,28 +34,6 @@ h1,h2,h3,h4,h5,h6{
     color: var(--green);
 }
 
-.list-product{
-    max-width: 100%;
-    list-style: none;
-    background-color: var(--white);
-}
-
-li{
-    font-family: var(--fontNunito);
-    font-size: medium;
-    margin: 5%;
-}
-
-li a.element-product{
-    color:  var(--black);
-    text-decoration: none;
-}
-
-li a.element-product:hover{
-    color: var(--green);
-    transform: scale(1.05);
-    transition: ease-out 0.15s;
-}
 
 .container{
     max-width: 95%;
@@ -71,6 +49,14 @@ li a.element-product:hover{
 
 .orange{
     color: var(--orange);
+}
+
+.white{
+    color:var(--white);
+}
+
+.bg-white{
+    background-color: var(--white);
 }
 
 .bg-orange{
@@ -242,6 +228,47 @@ li a.nav-link:hover{
     color: var(--green);
     font-weight: 600;
 }
+
+/*---------------------------------------------- List Products ---------------------------------------------------------------------------*/
+
+.list-product{
+    max-width: 100%;
+    list-style: none;
+    margin: 10px;
+    min-height: 100%;
+    border: 1px solid var(--green);
+    border-radius:0.375rem;
+}
+
+.list-product li{
+    font-family: var(--fontNunito);
+    font-size: larger;
+    margin: 7%;
+}
+
+li a.element-product{
+    color:  var(--black);
+    text-decoration: none;
+    text-align: center;
+}
+
+li a.element-product:hover{
+    text-decoration: underline;
+    color: var(--green);
+    transform: scale(1.1);
+    transition: ease-out 0.4s;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    -ms-transition: ease-out 0.4s;
+    -o-transition: ease-out 0.4s;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+
+
 
 
 /*---------------------------------------------- Contact ---------------------------------------------------------------------------*/
