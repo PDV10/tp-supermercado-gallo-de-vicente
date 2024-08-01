@@ -13,6 +13,7 @@ body{
 
 :root {
     --green: #afd189;
+    --lightGreen: #D3EAB9;
     --orange: #f4a261;
     --yellow: #ffeb9d;
     --gray: #edede9;
@@ -274,7 +275,6 @@ li a.element-product:hover{
 /*---------------------------------------------- Contact ---------------------------------------------------------------------------*/
 
 .container {
-    background-color: #fff;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
     border-radius: 10px;
@@ -286,7 +286,7 @@ li a.element-product:hover{
 .contact-form h2 {
     margin-bottom: 20px;
     font-size: 24px;
-    color: #5c4a72;
+    color: var(--green);
     text-align: center;
 }
 
@@ -294,7 +294,7 @@ li a.element-product:hover{
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #5c4a72;
+    color: var(--lightGreen);
 }
 
 .contact-form input,
@@ -302,43 +302,42 @@ li a.element-product:hover{
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #d1c4e9;
+    border: 1px solid var(--green);
     border-radius: 8px;
     font-size: 16px;
     box-sizing: border-box;
-    background-color: #f7f3ff;
+    background-color: #FEFEFE;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    border-color: #b39ddb;
+    border-color: var(--green);
     outline: none;
 }
 
 .contact-form button {
     width: 100%;
     padding: 12px;
-    background-color: #7e57c2;
+    background-color: var(--lightGreen);
     border: none;
     border-radius: 8px;
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .contact-form button:hover {
-    background-color: #673ab7;
+    background-color: var(--green);
 }
 
 .inputContact:hover{
-    border-color: #9677d0 ;
-    box-shadow: inset 0 0 0px rgb(191, 191, 191), 0px 0px 10px #aa92d7;
+    border-color: var(--green) ;
+    box-shadow: inset 0 0 0px rgb(191, 191, 191), 0px 0px 10px #8ce02c;
 }
 
 .inputContact:focus{
-    border-color: #9677d0 ;
-    box-shadow: inset 0 0 0px rgb(191, 191, 191), 0px 0px 10px #aa92d7;
+    border-color: #8ce02c ;
+    box-shadow: inset 0 0 0px rgb(191, 191, 191), 0px 0px 10px var(--green);
 }
 
 .obligatorio{
