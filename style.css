@@ -247,12 +247,13 @@ li a.nav-link:hover{
 /*---------------------------------------------- Contact ---------------------------------------------------------------------------*/
 
 .container {
-    /* background-color: #fff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+    background-color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
     border-radius: 10px;
     max-width: 98%;
     height: 100%;
+    max-width: 400px;
 }
 
 .contact-form h2 {
