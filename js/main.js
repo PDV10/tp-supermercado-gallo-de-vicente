@@ -46,6 +46,7 @@ function showCategories() {
 function showProducts(categoryId) {
   console.log("Category ID selected: " + categoryId);
   let containerCards = document.getElementById("container-cards");
+  containerCards.innerHTML = "";
 
   let productsByCategory = products.filter(
     (product) => product.category === categoryId
@@ -59,7 +60,7 @@ function showProducts(categoryId) {
             <h6 class="card-title">${product.name}</h6>
             <div class="number-input m-1">
               <button id="btn-decrement-${product.id}">-</button>
-              <input type="number" min="0" value="1" name="" class="input-quantity-product">
+              <input type="number" id="input-quantity-${product.id}" min="0" value="1" name="" class="input-quantity-product">
               <button id="btn-increment-${product.id}">+</button>
             </div>
             <p class="card-product-price m-1">$${product.price}</p>
@@ -68,6 +69,20 @@ function showProducts(categoryId) {
         </div>
       `;
   });
+
+
+  productCategories.forEach((product) =>{
+    document.getElementById(`btn-decrement-${product.id}`).addEventListener("click", () =>{
+        let input = document.getElementById(`input-quantity-${product.id}`)
+        let currentValue = parseInt(input.value);
+        if(currentValue > 0) input.value = currentValue - 1;
+    })
+    document.getElementById(`btn-increment-${product.id}`).addEventListener('click', () => {
+        let input = document.getElementById(`input-quantity-${product.id}`);
+        let currentValue = parseInt(input.value);
+        input.value = currentValue + 1;
+      });
+  })
 }
 
 showCategories();
@@ -110,3 +125,4 @@ btnEnviar.addEventListener("click", (e) => {
     saveAs(blob, "contact-form.txt");
   }
 });
+
