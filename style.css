@@ -302,3 +302,58 @@ li a.nav-link:hover{
 .contact-form button:hover {
     background-color: #673ab7;
 }
+
+.inputContact:hover{
+    border-color: #9677d0 ;
+    box-shadow: inset 0 0 0px rgb(191, 191, 191), 0px 0px 10px #aa92d7;
+}
+
+.inputContact:focus{
+    border-color: #9677d0 ;
+    box-shadow: inset 0 0 0px rgb(191, 191, 191), 0px 0px 10px #aa92d7;
+}
+
+.obligatorio{
+    color: red;
+}
+
+.required{
+    border: 1px solid rgb(253, 99, 99) !important;
+    box-shadow: inset 0 0 0px rgb(191, 191, 191), 0px 0px 5px #ce5d5d;
+    animation: zumbido 0.3s;
+}
+.required:hover{
+    border: 1px solid rgb(253, 99, 99) !important;
+    box-shadow: inset 0 0 0px rgb(191, 191, 191), 0px 0px 6px #d84747;
+}
+
+.validated{
+    border: 1px solid rgb(115, 255, 59) !important;
+    box-shadow: inset 0 0 0px rgb(191, 191, 191), 0px 0px 4px #76d36f;
+}
+
+.validated:hover{
+    border: 1px solid rgb(115, 255, 59) !important;
+    box-shadow: inset 0 0 0px rgb(191, 191, 191), 0px 0px 6px #76d36f;
+}
+
+@keyframes zumbido {
+    0% {
+        transform: translateX(2%);
+      }
+    25%{
+        transform: translateX(-2%);
+    }
+    33%{
+        transform: translateX(-2%);
+    }
+    45%{
+        transform: translateX(2%);
+    }
+    66%{
+        transform: translateX(2%);
+    }
+    100% {
+        transform: translateX(-2%);
+      }
+}

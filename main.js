@@ -2,12 +2,6 @@
 
 /*---------------------------------------------- Contact ---------------------------------------------------------------------------*/
 
-// Obtenes los input del form
-let inputName = document.getElementById("inputName");
-let inputLastName = document.getElementById("inputLastname");
-let inputEmail = document.getElementById("inputEmail");
-let inputPhone = document.getElementById("inputPhone");
-let inputMessage = document.getElementById("inputMessage");
 
 // Obtenes el boton del form
 let btnEnviar = document.getElementById("btnEnviar");
@@ -17,18 +11,32 @@ let informacion = [];
 
 // cuando se hace click en el boton 
 btnEnviar.addEventListener("click", (e)=>{
+
     // prevenis que se recarge la pag
     e.preventDefault();
+    let inputs = document.querySelectorAll(".inputContact");
+    let contador = 0;
+    inputs.forEach(input => {
+        let value = input.value;
+       
+        if(value == ""){
+            input.classList.remove("validated");
+            input.classList.add("required");
+          
+            contador++;
+        }else{
+            input.classList.remove("required");
+            input.classList.add("validated");
+        }
+        // agregas el valor de los input al arreglo
+        informacion.push(value);
     
-    // agregas el valor de los input al arreglo
-    informacion.push(inputName.value);
-    informacion.push(inputLastName.value);
-    informacion.push(inputEmail.value);
-    informacion.push(inputPhone.value);
-    informacion.push(inputMessage.value);
-
-    // Estas 2 lineas van tal cual como estan aca (informacio es el arreglo que creaste arriba)
-    let blob = new Blob([informacion], {type: "text/plain;charset=utf-8"})
-    // form.txt es el nombre del archivo que se descarga podes poner pepe.text
-    saveAs(blob, "form.txt")
+    });
+    
+    if(contador == 0){
+        // Estas 2 lineas van tal cual como estan aca (informacio es el arreglo que creaste arriba)
+        let blob = new Blob([informacion], {type: "text/plain;charset=utf-8"})
+        // form.txt es el nombre del archivo que se descarga podes poner pepe.text
+        saveAs(blob, "contact-form.txt")
+    }
 })

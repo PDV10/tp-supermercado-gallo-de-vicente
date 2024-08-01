@@ -35,20 +35,20 @@
       <div class="container mt-5">
         <form class="contact-form">
             <h2>Contact Us</h2>
-            <label for="name">Name</label>
-            <input type="text" id="inputName" name="name" required>
+            <label for="name">Name <span class="obligatorio">*</span></label>
+            <input type="text" id="inputName" class="inputContact" name="name" required>
 
-            <label for="lastname">Last Name</label>
-            <input type="text" id="inputLastname" name="lastname" required>
+            <label for="lastname">Last Name <span class="obligatorio">*</span></label>
+            <input type="text" id="inputLastname" class="inputContact" name="lastname" required>
 
-            <label for="email">Email</label>
-            <input type="email" id="inputEmail" name="email" required>
+            <label for="email">Email <span class="obligatorio">*</span></label>
+            <input type="email" id="inputEmail" class="inputContact" name="email" required>
 
-            <label for="phone">Phone</label>
-            <input type="text" id="inputPhone" name="phone" required>
+            <label for="phone">Phone <span class="obligatorio">*</span></label>
+            <input type="text" id="inputPhone" class="inputContact" name="phone" required>
 
-            <label for="message">Message</label>
-            <textarea id="inputMessage" name="message" rows="4" required></textarea>
+            <label for="message">Message <span class="obligatorio">*</span></label>
+            <textarea id="inputMessage" name="message" class="inputContact" rows="4" required></textarea>
 
             <button type="submit" id="btnEnviar">Send</button>
         </form>
