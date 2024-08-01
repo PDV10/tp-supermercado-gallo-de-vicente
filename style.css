@@ -239,6 +239,7 @@ li a.nav-link:hover{
     min-height: 100%;
     border: 1px solid var(--green);
     border-radius:0.375rem;
+    padding: 0;
 }
 
 .list-product li{
