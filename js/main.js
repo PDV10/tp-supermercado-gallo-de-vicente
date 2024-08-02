@@ -89,7 +89,7 @@ let productCategories = [
   { category: "Bakery and Pastry", id: 3 },
   { category: "Frozen Foods", id: 4 },
   { category: "Pantry", id: 5 },
-  { category: "Beverages", id: 6 },
+  { category: "Drinks", id: 6 },
   { category: "Snacks and Sweets", id: 7 },
   { category: "Cleaning Products", id: 8 },
   { category: "Hygiene and Personal Care", id: 9 },
