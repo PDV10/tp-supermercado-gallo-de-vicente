@@ -55,7 +55,7 @@ let products = [
   new Product(44, "Empanadas Congeladas (pack de 12)", 500.00, 25, 4, "https://http2.mlstatic.com/D_NQ_NP_2X_944329-MLA45571079545_052021-F.webp"),
   new Product(45, "Pizza Congelada (unidad)", 700.00, 15, 4, "https://http2.mlstatic.com/D_NQ_NP_2X_955783-MLA45673990286_052021-F.webp"),
   new Product(46, "Pechugas de Pollo Congeladas (kg)", 1000.00, 20, 4, "https://http2.mlstatic.com/D_NQ_NP_2X_946698-MLA45616264367_052021-F.webp"),
-  // Categoría Pantry (id: 5)
+  // Categoría Despensa (id: 5)
   new Product(47, "Arroz 1kg", 300.00, 50, 5, "https://http2.mlstatic.com/D_NQ_NP_2X_953257-MLA45596094582_032021-F.webp"),
   new Product(48, "Azúcar 1kg", 250.00, 45, 5, "https://http2.mlstatic.com/D_NQ_NP_2X_960972-MLA45885578341_052021-F.webp"),
   new Product(49, "Harina 1kg", 280.00, 55, 5, "https://http2.mlstatic.com/D_NQ_NP_2X_953622-MLA45383872672_032021-F.webp"),
