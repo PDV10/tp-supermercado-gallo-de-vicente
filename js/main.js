@@ -199,7 +199,7 @@ if(btnsAddToCart){
 
 function addProductToCart(id){
   // Get the quantity of the input quantity
-  let quantity = document.querySelector(`#input-quantity-${id}`).value
+  let quantity = document.querySelector(`#input-quantity-${id}`)
   // Look for a product on the array object who id is equals to parameter id
   let prod = products.find(product => product.id == id)
 
@@ -208,25 +208,29 @@ function addProductToCart(id){
     "id": id,
     "name": prod.name,
     "price": prod.price,
-    "quantity": quantity,
+    "quantity": quantity.value,
     "category": prod.category,
     "img": prod.img
   }
 
   // add product tu cart
-  cart.push(productToAdd);
+  if(prod.stock > 0 && quantity.value<=prod.stock ){
 
-  // update stock in object
-  prod.stock -= quantity;
-
-  // Get Dom element to show quantity of items inside the cart
-  let cartLengthIcon = document.getElementById("itemsInCart");
-  cartLengthIcon.innerText = cart.length;
-  if(cart.length >0){
-    // Remove the class d-none to make it visible
-    cartLengthIcon.classList.remove("d-none");
+    cart.push(productToAdd);
+    
+    // update stock in object
+    prod.stock -= quantity.value;
+    
+    // Get Dom element to show quantity of items inside the cart
+    let cartLengthIcon = document.getElementById("itemsInCart");
+    cartLengthIcon.innerText = cart.length;
+    if(cart.length >0){
+      // Remove the class d-none to make it visible
+      cartLengthIcon.classList.remove("d-none");
+    }
+    showCartProducts();
+    quantity.value = 1;
   }
-  showCartProducts();
   /*  console.log(cart); */
 }
 
