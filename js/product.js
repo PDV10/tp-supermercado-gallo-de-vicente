@@ -9,6 +9,7 @@ class Product {
         this.img = img;
     }
 
+
     checkStock(quantity){
         if(quantity > 0 && quantity <= this.stock) return true;
         else return false;
