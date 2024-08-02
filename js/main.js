@@ -8,7 +8,7 @@ let products = [
   new Product(2, "Cerveza Quilmes 6 pack", 6000.00, 30, 6, "https://http2.mlstatic.com/D_NQ_NP_2X_955320-MLA45529186585_042021-F.webp"),
   new Product(3, "Fernet Branca 750ml", 12000.00, 15, 6, "https://http2.mlstatic.com/D_NQ_NP_2X_976460-MLA46694964780_072021-F.webp"),
   new Product(4, "Espumante Chandon Extra Brut 750ml", 35000.00, 25, 6, "https://http2.mlstatic.com/D_NQ_NP_2X_925483-MLA46821636226_072021-F.webp"),
-  new Product(5, "Vino Malbec Bodega Norton 750ml", 28000.00, 10, 6, "../assets/vino.png"),
+  new Product(5, "Vino Malbec Bodega Norton 750ml", 28000.00, 10, 6, "./assets/img-productos/bebidas/vino.png"),
   new Product(6, "Gaseosa Coca-Cola 2.5L", 2200.00, 40, 6, "https://http2.mlstatic.com/D_NQ_NP_2X_947015-MLA44958670724_022021-F.webp"),
   new Product(7, "Agua Mineral Villavicencio 1.5L", 1500.00, 50, 6, "https://http2.mlstatic.com/D_NQ_NP_2X_974347-MLA46620393929_072021-F.webp"),
   new Product(8, "Jugo de Naranja 1L", 1800.00, 35, 6, "https://http2.mlstatic.com/D_NQ_NP_2X_940781-MLA45981436401_052021-F.webp"),
@@ -289,7 +289,11 @@ function addProductToCart(id){
   // Get the quantity of the input quantity
   let quantity = document.querySelector(`#input-quantity-${id}`)
   // Look for a product on the array object who id is equals to parameter id
-  let prod = products.find(product => product.id == id)
+  let prod = products.find(product => product.id == id);
+
+  if(cart.length > 0){
+    let pInfoCart = document.querySelector("#cart-message");
+  }
 
   // Create product to add to cart
   let productToAdd = {
