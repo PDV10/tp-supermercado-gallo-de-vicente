@@ -426,6 +426,10 @@ svg.shop-Cart{
     background-color: white; 
 }
 
+.li-active{
+    border-bottom: 2px solid var(--green);
+}
+
 li a.element-product{
     color: var(--black);
     text-decoration: none;

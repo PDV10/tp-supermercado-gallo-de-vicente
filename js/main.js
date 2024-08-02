@@ -105,7 +105,7 @@ function showCategories() {
     productCategories.forEach((categoryObj) => {
       // Create a <li> element for each category
       let liElement = document.createElement("li");
-
+      liElement.id = `category-${categoryObj.id}`;
       // Create an <a> element inside the <li> element
       let aElement = document.createElement("a");
       aElement.className = "element-product"; // Assign the class name
@@ -135,6 +135,12 @@ function showCategories() {
 function showProducts(categoryId) {
   // Clear the card container before adding new ones
   let containerCards = document.getElementById("container-cards");
+
+  let lastLi = document.querySelector(".li-active");
+  if(lastLi) lastLi.classList.remove("li-active");
+  
+  let liCurrent = document.getElementById(`category-${categoryId}`);
+  liCurrent.classList.add("li-active");  
   if(containerCards){
     containerCards.innerHTML = "";
 
