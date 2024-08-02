@@ -182,7 +182,6 @@ function showProducts(categoryId) {
 /* --------------------------------------------------------- CART ----------------------------------------------------------- */
 
 // Get all buttons with "btn-addToCart" class
-
 let btnsAddToCart = document.querySelectorAll(".btn-addToCart");
 
 // if this array of buttons are diferent of null 
@@ -227,10 +226,74 @@ function addProductToCart(id){
     // Remove the class d-none to make it visible
     cartLengthIcon.classList.remove("d-none");
   }
+  showCartProducts();
   /*  console.log(cart); */
 }
 
+function showCartProducts(){
+  // Get the modal body div
+  let modalBodyDiv = document.querySelector(".modal-body");
+  modalBodyDiv.innerHTML = "";
 
+  // Get the cart product list ul
+  let ulElement = document.getElementById("list-cart-products");
+  // Get the p element to display the total 
+  let pElement = document.getElementById("p-total");
+
+  // Check if these elements have already been created
+  if(ulElement == null && pElement == null){
+    // If not, create them
+    ulElement = document.createElement("ul");
+    ulElement.className = "list-group list-group-flush";
+    ulElement.id = "list-cart-products";
+  
+    pElement = document.createElement("p");
+    pElement.className = "text-end badge  bg-primary rounded ";
+    pElement.id = "p-total";
+  }
+    
+  let total = 0;
+  cart.forEach(product => {
+    // Create the li element to display product info
+    let liElement = document.createElement("li");
+    liElement.className = "list-group-item";
+
+    // Create a div to hold the product info
+    let divElement = document.createElement("div");
+
+    // Create a strong element for the product name
+    let productNameElement = document.createElement("strong");
+    productNameElement.textContent = product.name;
+
+    // Create a br element for spacing
+    let brElement = document.createElement("br");
+
+    // Create a small element for the product price and quantity
+    let productInfoElement = document.createElement("small");
+    productInfoElement.textContent = `Price: $${product.price.toFixed(2)} x ${product.quantity}`;
+
+    // Append the elements to the div
+    divElement.appendChild(productNameElement);
+    divElement.appendChild(brElement);
+    divElement.appendChild(productInfoElement);
+
+    // Append the div to the li
+    liElement.appendChild(divElement);
+
+    // Calculate the total cost
+    total += product.price * product.quantity;
+
+    // Append the li to the ul
+    ulElement.appendChild(liElement);
+  });
+
+  // Update the total in the p element
+  pElement.textContent = `Total: $${total.toFixed(2)}`;
+
+  // Append the ul and p to the modal body
+  modalBodyDiv.appendChild(ulElement);
+  modalBodyDiv.appendChild(pElement);
+}
 
 
 /*---------------------------------------------- Contact ---------------------------------------------------------------------------*/
