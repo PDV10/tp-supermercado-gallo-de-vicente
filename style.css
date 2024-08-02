@@ -132,6 +132,14 @@ li a.nav-link:hover{
     height: 30px;
     color: rgba(61, 61, 61, 0.847);
 }
+
+svg.shop-Cart{
+    width: 25px;
+    height: 20px;
+    color: rgba(41, 41, 41, 0.835);
+    margin-bottom: 5px;
+}
+
 .cart-icon svg:hover{
     color: var(--green);
     transform: scale(1.1);
@@ -143,8 +151,8 @@ li a.nav-link:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     border: 1px solid rgba(255, 40, 40, 0.664);
     border-radius: 100%;
     position: relative;
@@ -156,9 +164,11 @@ li a.nav-link:hover{
     z-index: 1000;
 }
 
-/* .esconder{
+
+
+.esconder{
     display: none !important;
-} */
+}
 /*---------------------------------------------- CAROUSEL ---------------------------------------------------------------------------*/
 
 .carousel{

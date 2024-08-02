@@ -179,8 +179,10 @@ function showProducts(categoryId) {
   showCategories();
   showProducts(productCategories[6].id);
 
+/* --------------------------------------------------------- CART ----------------------------------------------------------- */
 
 // Get all buttons with "btn-addToCart" class
+
 let btnsAddToCart = document.querySelectorAll(".btn-addToCart");
 
 // if this array of buttons are diferent of null 
@@ -210,15 +212,26 @@ function addProductToCart(id){
     "quantity": quantity,
     "category": prod.category,
     "img": prod.img
+  }
+
+  // add product tu cart
+  cart.push(productToAdd);
+
+  // update stock in object
+  prod.stock -= quantity;
+
+  // Get Dom element to show quantity of items inside the cart
+  let cartLengthIcon = document.getElementById("itemsInCart");
+  cartLengthIcon.innerText = cart.length;
+  if(cart.length >0){
+    // Remove the class d-none to make it visible
+    cartLengthIcon.classList.remove("d-none");
+  }
+  /*  console.log(cart); */
 }
 
-// add product tu cart
-cart.push(productToAdd);
 
- // update stock in object
- prod.stock -= quantity;
- console.log(cart);
-}
+
 
 /*---------------------------------------------- Contact ---------------------------------------------------------------------------*/
 
