@@ -262,19 +262,19 @@ function showCartProducts(){
     let divElement = document.createElement("div");
 
     // Create a strong element for the product name
-    let productNameElement = document.createElement("strong");
+    let productNameElement = document.createElement("p");
+    productNameElement.className = "product-name";
     productNameElement.textContent = product.name;
 
     // Create a br element for spacing
-    let brElement = document.createElement("br");
 
     // Create a small element for the product price and quantity
-    let productInfoElement = document.createElement("small");
+    let productInfoElement = document.createElement("p");
     productInfoElement.textContent = `Price: $${product.price.toFixed(2)} x ${product.quantity}`;
+    productInfoElement.className = "product-info";
 
     // Append the elements to the div
     divElement.appendChild(productNameElement);
-    divElement.appendChild(brElement);
     divElement.appendChild(productInfoElement);
 
     // Append the div to the li
