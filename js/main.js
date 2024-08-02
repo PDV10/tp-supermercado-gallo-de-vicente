@@ -4,12 +4,12 @@
 
 let products = [
   new Product(
-    0,
-    "Vino Rutini Cabernet Malbec estuche con 2 unidades",
-    28776.14,
-    20,
-    6,
-    "https://http2.mlstatic.com/D_NQ_NP_2X_931887-MLA45997494438_052021-F.webp"
+    0, //id
+    "Vino Rutini Cabernet Malbec estuche con 2 unidades", // Name
+    28776.14, // Price
+    20, // Stock
+    6,  // CategoryId
+    "https://http2.mlstatic.com/D_NQ_NP_2X_931887-MLA45997494438_052021-F.webp" // Img
   ),
 ];
 
@@ -57,6 +57,8 @@ function showCategories() {
     });
   });
 }
+
+/* --------------------------------------------------------- ShowProducts -------------------------------------------------- */
 
 function showProducts(categoryId) {
   // Clear the card container before adding new ones
@@ -135,29 +137,47 @@ function showProducts(categoryId) {
     cardDiv.appendChild(cardBodyDiv);
 
     containerCards.appendChild(cardDiv);
+
   });
 
   // Assign click events to the increment and decrement buttons
-  productCategories.forEach((product) => {
-    document
-      .getElementById(`btn-decrement-${product.id}`)
-      .addEventListener("click", () => {
-        let input = document.getElementById(`input-quantity-${product.id}`);
-        let currentValue = parseInt(input.value);
-        if (currentValue > 0) input.value = currentValue - 1;
+    productsByCategory.forEach((product) => {
+      let inputQuantity = document.getElementById(`input-quantity-${product.id}`);
+
+      let btnDecrement = document.getElementById(`btn-decrement-${product.id}`);
+      btnDecrement.addEventListener("click", (e) => {
+        e.preventDefault();
+        let currentValue = parseInt(inputQuantity.value);
+        if (currentValue > 0) inputQuantity.value = currentValue - 1;
       });
-    document
-      .getElementById(`btn-increment-${product.id}`)
-      .addEventListener("click", () => {
-        let input = document.getElementById(`input-quantity-${product.id}`);
-        let currentValue = parseInt(input.value);
-        input.value = currentValue + 1;
+      
+      let btnIncrement = document.getElementById(`btn-increment-${product.id}`);
+      btnIncrement.addEventListener("click", () => {
+        let currentValue = parseInt(inputQuantity.value);
+        if(currentValue+1 <= product.stock){
+          inputQuantity.value = currentValue + 1;
+        }else{
+          console.log("Maximo stock alcanzado");
+        }
       });
-  });
+      
+      inputQuantity.addEventListener("keyup",() =>{
+        let value = inputQuantity.value;
+        if(value > product.stock){
+          inputQuantity.value = product.stock;
+        }
+      })
+
+
+    });
+  
 }
 
-showCategories();
-showProducts(productCategories[6].id);
+  showCategories();
+  showProducts(productCategories[6].id);
+
+
+
 
 /*---------------------------------------------- Contact ---------------------------------------------------------------------------*/
 
@@ -168,31 +188,35 @@ let btnEnviar = document.getElementById("btnEnviar");
 let informacion = [];
 
 // cuando se hace click en el boton
-btnEnviar.addEventListener("click", (e) => {
-  // prevenis que se recarge la pag
-  e.preventDefault();
-  let inputs = document.querySelectorAll(".inputContact");
-  let contador = 0;
-  inputs.forEach((input) => {
-    let value = input.value;
+if(btnEnviar){
 
-    if (value == "") {
-      input.classList.remove("validated");
-      input.classList.add("required");
-
-      contador++;
-    } else {
-      input.classList.remove("required");
-      input.classList.add("validated");
+  btnEnviar.addEventListener("click", (e) => {
+    // prevenis que se recarge la pag
+    e.preventDefault();
+    let inputs = document.querySelectorAll(".inputContact");
+    let contador = 0;
+    inputs.forEach((input) => {
+      let value = input.value;
+      
+      if (value == "") {
+        input.classList.remove("validated");
+        input.classList.add("required");
+        
+        contador++;
+      } else {
+        input.classList.remove("required");
+        input.classList.add("validated");
+      }
+      // agregas el valor de los input al arreglo
+      informacion.push(value);
+    });
+    
+    if (contador == 0) {
+      // Estas 2 lineas van tal cual como estan aca (informacio es el arreglo que creaste arriba)
+      let blob = new Blob([informacion], { type: "text/plain;charset=utf-8" });
+      // form.txt es el nombre del archivo que se descarga podes poner pepe.text
+      saveAs(blob, "contact-form.txt");
     }
-    // agregas el valor de los input al arreglo
-    informacion.push(value);
   });
-
-  if (contador == 0) {
-    // Estas 2 lineas van tal cual como estan aca (informacio es el arreglo que creaste arriba)
-    let blob = new Blob([informacion], { type: "text/plain;charset=utf-8" });
-    // form.txt es el nombre del archivo que se descarga podes poner pepe.text
-    saveAs(blob, "contact-form.txt");
-  }
-});
+}
+  
