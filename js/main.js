@@ -10,6 +10,34 @@ let products = [
     20, // Stock
     6,  // CategoryId
     "https://http2.mlstatic.com/D_NQ_NP_2X_931887-MLA45997494438_052021-F.webp" // Img
+  ),new Product(
+    1, //id
+    "Vino Rutini Cabernet Malbec estuche con 2 unidades", // Name
+    28776.14, // Price
+    20, // Stock
+    6,  // CategoryId
+    "https://http2.mlstatic.com/D_NQ_NP_2X_931887-MLA45997494438_052021-F.webp" // Img
+  ),new Product(
+    2, //id
+    "Vino Rutini Cabernet Malbec estuche con 2 unidades", // Name
+    28776.14, // Price
+    20, // Stock
+    6,  // CategoryId
+    "https://http2.mlstatic.com/D_NQ_NP_2X_931887-MLA45997494438_052021-F.webp" // Img
+  ),new Product(
+    3, //id
+    "Vino Rutini Cabernet Malbec estuche con 2 unidades", // Name
+    28776.14, // Price
+    20, // Stock
+    6,  // CategoryId
+    "https://http2.mlstatic.com/D_NQ_NP_2X_931887-MLA45997494438_052021-F.webp" // Img
+  ),new Product(
+    4, //id
+    "Vino Rutini Cabernet Malbec estuche con 2 unidades", // Name
+    28776.14, // Price
+    20, // Stock
+    6,  // CategoryId
+    "https://http2.mlstatic.com/D_NQ_NP_2X_931887-MLA45997494438_052021-F.webp" // Img
   ),
 ];
 
@@ -76,8 +104,9 @@ function showProducts(categoryId) {
   productsByCategory.forEach((product) => {
     // Create the main container for the card
     let cardDiv = document.createElement("div");
-    cardDiv.className = "card border-green align-items-center";
+    cardDiv.className = "card animacion border-green align-items-center";
     cardDiv.style.width = "18rem";
+    cardDiv.id = `cardDiv-${product.id}`;
 
     // Create the image element and set it up
     let cardImg = document.createElement("img");
@@ -118,6 +147,7 @@ function showProducts(categoryId) {
     let pElement = document.createElement("p");
     pElement.className = "card-product-price m-1";
     pElement.textContent = `$${product.price}`;
+    pElement.id = `price-${product.id}`;
 
     // Create the purchase button
     let addToCartButton = document.createElement("button");
@@ -230,6 +260,17 @@ function addProductToCart(id){
     }
     showCartProducts();
     quantity.value = 1;
+  }else{
+    let card = document.getElementById(`cardDiv-${id}`);
+    let cardPrice = document.getElementById(`price-${id}`);
+    let btnCard = document.getElementById(`${id}`);
+    btnCard.setAttribute("disabled",true);
+    
+    cardPrice.innerText = "Sin Stock"
+    
+    card.classList.remove("animacion");
+    card.classList.add("withOutStock");
+    
   }
   /*  console.log(cart); */
 }
@@ -340,4 +381,3 @@ if(btnEnviar){
     }
   });
 }
-  

@@ -249,11 +249,10 @@ svg.shop-Cart{
     justify-content: center;
 }
 
-
-
-.esconder{
-    display: none !important;
+.withOutStock{
+    background-color: rgb(189, 189, 189)!important;
 }
+
 /*---------------------------------------------- CAROUSEL ---------------------------------------------------------------------------*/
 
 .carousel{
@@ -311,12 +310,20 @@ svg.shop-Cart{
     max-height: 45%;  
 }
 
-.card:hover{
+/* .card:hover{
+    transform: scale(1.03);
+    z-index: 1000;
+    transition: ease 0.4s;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+} */
+
+.card.animacion:hover{
     transform: scale(1.03);
     z-index: 1000;
     transition: ease 0.4s;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
+
 
 .number-input{
     display: flex;
@@ -362,6 +369,18 @@ svg.shop-Cart{
 .btn-addToCart:hover{
     color: var(--green);
     font-weight: 600;
+}
+
+.btn-addToCart:disabled{
+    color: #696969;
+    border-color: #6e6e6e;
+}
+
+.btn-addToCart:disabled:hover{
+    color: #696969;
+    font-weight: 400;
+    text-decoration: dashed;
+    
 }
 
 /*---------------------------------------------- List Products ---------------------------------------------------------------------------*/
