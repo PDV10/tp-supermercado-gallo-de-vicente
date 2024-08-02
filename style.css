@@ -136,8 +136,29 @@ li a.nav-link:hover{
     color: var(--green);
     transform: scale(1.1);
     cursor: pointer;
+    z-index: 1;
 } 
 
+#itemsInCart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(255, 40, 40, 0.664);
+    border-radius: 100%;
+    position: relative;
+    top: -12px;
+    left: 42px;
+    color: #ce5d5d;
+    font-family: monospace;
+    font-weight: 600;
+    z-index: 1000;
+}
+
+/* .esconder{
+    display: none !important;
+} */
 /*---------------------------------------------- CAROUSEL ---------------------------------------------------------------------------*/
 
 .carousel{
@@ -232,7 +253,7 @@ li a.nav-link:hover{
     margin-bottom: 2px;
 }
 
-.btn-buy{
+.btn-addToCart{
     background-color: white;
     border: 2px solid var(--green);
     margin: 10px;
@@ -240,9 +261,10 @@ li a.nav-link:hover{
     width: 60%;
     border-radius: 25px;
     text-transform: uppercase;
+    font-size: 15px;
 }
 
-.btn-buy:hover{
+.btn-addToCart:hover{
     color: var(--green);
     font-weight: 600;
 }

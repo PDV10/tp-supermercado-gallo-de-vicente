@@ -26,6 +26,8 @@ let productCategories = [
   { category: "Higiene y C. Personal", id: 9 },
 ];
 
+let cart = [];
+
 function showCategories() {
   // Select the container where the category list will be displayed
   let listProducts = document.querySelector(".list-product");
@@ -118,10 +120,11 @@ function showProducts(categoryId) {
     pElement.textContent = `$${product.price}`;
 
     // Create the purchase button
-    let buyButton = document.createElement("button");
-    buyButton.type = "button";
-    buyButton.className = "btn-buy";
-    buyButton.textContent = "Comprar";
+    let addToCartButton = document.createElement("button");
+    addToCartButton.type = "button";
+    addToCartButton.className = "btn-addToCart";
+    addToCartButton.id = product.id;
+    addToCartButton.textContent = "Add to Cart";
 
     // Append the elements to the DOM in the correct order
     numberInputDiv.appendChild(decrementButton);
@@ -131,7 +134,7 @@ function showProducts(categoryId) {
     cardBodyDiv.appendChild(h6Element);
     cardBodyDiv.appendChild(numberInputDiv);
     cardBodyDiv.appendChild(pElement);
-    cardBodyDiv.appendChild(buyButton);
+    cardBodyDiv.appendChild(addToCartButton);
 
     cardDiv.appendChild(cardImg);
     cardDiv.appendChild(cardBodyDiv);
@@ -160,7 +163,7 @@ function showProducts(categoryId) {
           console.log("Maximo stock alcanzado");
         }
       });
-      
+
       inputQuantity.addEventListener("keyup",() =>{
         let value = inputQuantity.value;
         if(value > product.stock){
@@ -177,7 +180,45 @@ function showProducts(categoryId) {
   showProducts(productCategories[6].id);
 
 
+// Get all buttons with "btn-addToCart" class
+let btnsAddToCart = document.querySelectorAll(".btn-addToCart");
 
+// if this array of buttons are diferent of null 
+if(btnsAddToCart){
+  btnsAddToCart.forEach(btn => {
+    btn.addEventListener("click", (e) =>{
+      e.preventDefault();
+      // Get id of the button
+      let idBtn =  btn.getAttribute("id");
+      // Call to function add product with id button by parameter
+      addProductToCart(idBtn);
+    })
+});
+}
+
+function addProductToCart(id){
+  // Get the quantity of the input quantity
+  let quantity = document.querySelector(`#input-quantity-${id}`).value
+  // Look for a product on the array object who id is equals to parameter id
+  let prod = products.find(product => product.id == id)
+
+  // Create product to add to cart
+  let productToAdd = {
+    "id": id,
+    "name": prod.name,
+    "price": prod.price,
+    "quantity": quantity,
+    "category": prod.category,
+    "img": prod.img
+}
+
+// add product tu cart
+cart.push(productToAdd);
+
+ // update stock in object
+ prod.stock -= quantity;
+ console.log(cart);
+}
 
 /*---------------------------------------------- Contact ---------------------------------------------------------------------------*/
 
