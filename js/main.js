@@ -27,62 +27,133 @@ let productCategories = [
 ];
 
 function showCategories() {
+  // Select the container where the category list will be displayed
   let listProducts = document.querySelector(".list-product");
-  listProducts.innerHTML = "";
+
+  // Loop through each category object in productCategories
   productCategories.forEach((categoryObj) => {
-    console.log(categoryObj);
-    listProducts.innerHTML += `<li><a class="element-product" data-category-id="${categoryObj.id}" href="#">${categoryObj.category}</a></li>`;
+    // Create a <li> element for each category
+    let liElement = document.createElement("li");
+
+    // Create an <a> element inside the <li> element
+    let aElement = document.createElement("a");
+    aElement.className = "element-product"; // Assign the class name
+    aElement.setAttribute("data-category-id", categoryObj.id); // Set a custom attribute to store the category ID
+    aElement.textContent = categoryObj.category; // Set the category name as the link text
+
+    // Append the <a> element inside the <li> element
+    liElement.appendChild(aElement);
+
+    // Append the <li> element to the list container
+    listProducts.appendChild(liElement);
   });
 
+  // Add click event listeners to each <a> element with the class 'element-product'
   document.querySelectorAll(".element-product").forEach((element) => {
     element.addEventListener("click", function (event) {
-      event.preventDefault();
-      let categoryId = parseInt(this.getAttribute("data-category-id"));
-      showProducts(categoryId);
+      event.preventDefault(); // Prevent the default link behavior
+      let categoryId = parseInt(this.getAttribute("data-category-id")); // Get the category ID from the data attribute
+      showProducts(categoryId); // Call the function to show products for the selected category
     });
   });
 }
 
 function showProducts(categoryId) {
-  console.log("Category ID selected: " + categoryId);
+  // Clear the card container before adding new ones
   let containerCards = document.getElementById("container-cards");
   containerCards.innerHTML = "";
 
+  // Filter the products to get only those that belong to the selected category
   let productsByCategory = products.filter(
     (product) => product.category === categoryId
   );
 
+  // Iterate over the filtered products and create the cards
   productsByCategory.forEach((product) => {
-    containerCards.innerHTML += `
-        <div class="card border-green align-items-center" style="width: 18rem;">
-          <img src="${product.img}" class="card-img-top" alt="...">
-          <div class="card-body border-top-black m-2">
-            <h6 class="card-title">${product.name}</h6>
-            <div class="number-input m-1">
-              <button id="btn-decrement-${product.id}">-</button>
-              <input type="number" id="input-quantity-${product.id}" min="0" value="1" name="" class="input-quantity-product">
-              <button id="btn-increment-${product.id}">+</button>
-            </div>
-            <p class="card-product-price m-1">$${product.price}</p>
-            <button type="button" class="btn-buy">Comprar</button>
-          </div>
-        </div>
-      `;
+    // Create the main container for the card
+    let cardDiv = document.createElement("div");
+    cardDiv.className = "card border-green align-items-center";
+    cardDiv.style.width = "18rem";
+
+    // Create the image element and set it up
+    let cardImg = document.createElement("img");
+    cardImg.src = `${product.img}`;
+    cardImg.className = "card-img-top";
+
+    // Create the container for the card body
+    let cardBodyDiv = document.createElement("div");
+    cardBodyDiv.className = "card-body border-top-black m-2";
+
+    // Create the card title
+    let h6Element = document.createElement("h6");
+    h6Element.textContent = `${product.name}`;
+
+    // Create the container for the increment/decrement buttons and the quantity input
+    let numberInputDiv = document.createElement("div");
+    numberInputDiv.className = "number-input m-1";
+
+    // Create the button to decrement the quantity value
+    let decrementButton = document.createElement("button");
+    decrementButton.id = `btn-decrement-${product.id}`;
+    decrementButton.textContent = "-";
+
+    // Create the input to enter the product quantity
+    let quantityInput = document.createElement("input");
+    quantityInput.type = "number";
+    quantityInput.value = 1;
+    quantityInput.id = `input-quantity-${product.id}`;
+    quantityInput.min = 0;
+    quantityInput.className = "input-quantity-product";
+
+    // Create the button to increment the quantity value
+    let incrementButton = document.createElement("button");
+    incrementButton.id = `btn-increment-${product.id}`;
+    incrementButton.textContent = "+";
+
+    // Create the paragraph element to display the product price
+    let pElement = document.createElement("p");
+    pElement.className = "card-product-price m-1";
+    pElement.textContent = `$${product.price}`;
+
+    // Create the purchase button
+    let buyButton = document.createElement("button");
+    buyButton.type = "button";
+    buyButton.className = "btn-buy";
+    buyButton.textContent = "Comprar";
+
+    // Append the elements to the DOM in the correct order
+    numberInputDiv.appendChild(decrementButton);
+    numberInputDiv.appendChild(quantityInput);
+    numberInputDiv.appendChild(incrementButton);
+
+    cardBodyDiv.appendChild(h6Element);
+    cardBodyDiv.appendChild(numberInputDiv);
+    cardBodyDiv.appendChild(pElement);
+    cardBodyDiv.appendChild(buyButton);
+
+    cardDiv.appendChild(cardImg);
+    cardDiv.appendChild(cardBodyDiv);
+
+    containerCards.appendChild(cardDiv);
   });
 
-
-  productCategories.forEach((product) =>{
-    document.getElementById(`btn-decrement-${product.id}`).addEventListener("click", () =>{
-        let input = document.getElementById(`input-quantity-${product.id}`)
+  // Assign click events to the increment and decrement buttons
+  productCategories.forEach((product) => {
+    document
+      .getElementById(`btn-decrement-${product.id}`)
+      .addEventListener("click", () => {
+        let input = document.getElementById(`input-quantity-${product.id}`);
         let currentValue = parseInt(input.value);
-        if(currentValue > 0) input.value = currentValue - 1;
-    })
-    document.getElementById(`btn-increment-${product.id}`).addEventListener('click', () => {
+        if (currentValue > 0) input.value = currentValue - 1;
+      });
+    document
+      .getElementById(`btn-increment-${product.id}`)
+      .addEventListener("click", () => {
         let input = document.getElementById(`input-quantity-${product.id}`);
         let currentValue = parseInt(input.value);
         input.value = currentValue + 1;
       });
-  })
+  });
 }
 
 showCategories();
@@ -125,4 +196,3 @@ btnEnviar.addEventListener("click", (e) => {
     saveAs(blob, "contact-form.txt");
   }
 });
-
