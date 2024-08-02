@@ -14,16 +14,16 @@ let products = [
 ];
 
 let productCategories = [
-  { category: "Frutas y Verduras", id: 0 },
-  { category: "Carnes y Pescados", id: 1 },
-  { category: "Lácteos y Huevos", id: 2 },
-  { category: "Panadería y Pastelería", id: 3 },
-  { category: "Congelados", id: 4 },
-  { category: "Despensa", id: 5 },
-  { category: "Bebidas", id: 6 },
-  { category: "Snacks y Dulces", id: 7 },
-  { category: "Productos de Limpieza", id: 8 },
-  { category: "Higiene y C. Personal", id: 9 },
+  { category: "Fruits and Vegetables", id: 0 },
+  { category: "Meats and Fish", id: 1 },
+  { category: "Dairy and Eggs", id: 2 },
+  { category: "Bakery and Pastry", id: 3 },
+  { category: "Frozen Foods", id: 4 },
+  { category: "Pantry", id: 5 },
+  { category: "Beverages", id: 6 },
+  { category: "Snacks and Sweets", id: 7 },
+  { category: "Cleaning Products", id: 8 },
+  { category: "Hygiene and Personal Care", id: 9 },
 ];
 
 let cart = [];
