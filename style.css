@@ -196,6 +196,9 @@ svg.shop-Cart{
 }
 
 .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border: none;
     background-color: #ffffff;
     border-bottom: 1px solid #e9ecef;
@@ -203,6 +206,20 @@ svg.shop-Cart{
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 10px;
+    width: 100%;
+}
+
+.list-group-item div{
+    width: 80%;
+}
+
+.list-group-item .img-cart{
+    width: 20%;
+}
+
+.img-cart img{
+    width: 100%;
+    object-fit: cover;
 }
 
 .list-group-item div {

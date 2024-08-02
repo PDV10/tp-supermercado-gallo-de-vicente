@@ -8,7 +8,7 @@ let products = [
   new Product(2, "Cerveza Quilmes 6 pack", 6000.00, 30, 6, "https://http2.mlstatic.com/D_NQ_NP_2X_955320-MLA45529186585_042021-F.webp"),
   new Product(3, "Fernet Branca 750ml", 12000.00, 15, 6, "https://http2.mlstatic.com/D_NQ_NP_2X_976460-MLA46694964780_072021-F.webp"),
   new Product(4, "Espumante Chandon Extra Brut 750ml", 35000.00, 25, 6, "https://http2.mlstatic.com/D_NQ_NP_2X_925483-MLA46821636226_072021-F.webp"),
-  new Product(5, "Vino Malbec Bodega Norton 750ml", 28000.00, 10, 6, "https://http2.mlstatic.com/D_NQ_NP_2X_936474-MLA47772492476_092021-F.webp"),
+  new Product(5, "Vino Malbec Bodega Norton 750ml", 28000.00, 10, 6, "../assets/vino.png"),
   new Product(6, "Gaseosa Coca-Cola 2.5L", 2200.00, 40, 6, "https://http2.mlstatic.com/D_NQ_NP_2X_947015-MLA44958670724_022021-F.webp"),
   new Product(7, "Agua Mineral Villavicencio 1.5L", 1500.00, 50, 6, "https://http2.mlstatic.com/D_NQ_NP_2X_974347-MLA46620393929_072021-F.webp"),
   new Product(8, "Jugo de Naranja 1L", 1800.00, 35, 6, "https://http2.mlstatic.com/D_NQ_NP_2X_940781-MLA45981436401_052021-F.webp"),
@@ -370,17 +370,40 @@ function showCartProducts(){
 
     // Create a br element for spacing
 
+/* 
+        
+            <div class="img-cart">
+              <img src="./assets/leche.png" alt="">
+            </div>
+          </li> */
+
     // Create a small element for the product price and quantity
     let productInfoElement = document.createElement("p");
     productInfoElement.textContent = `Price: $${product.price.toFixed(2)} x ${product.quantity}`;
     productInfoElement.className = "product-info";
 
+    let productTotalPriceElement = document.createElement("p");
+    let totalPrice = product.price*product.quantity;
+    productTotalPriceElement.textContent = `Total: $${totalPrice}`;
+    productTotalPriceElement.className = "product-info";
+
     // Append the elements to the div
     divElement.appendChild(productNameElement);
     divElement.appendChild(productInfoElement);
+    divElement.appendChild(productTotalPriceElement);
+
+    let imgContainer = document.createElement("div");
+    imgContainer.classList.add("img-cart")
+
+    let img = document.createElement("img");
+    img.src = product.img;
+    img.alt = product.name;
+    
+    imgContainer.appendChild(img);
 
     // Append the div to the li
     liElement.appendChild(divElement);
+    liElement.appendChild(imgContainer);
 
     // Calculate the total cost
     total += product.price * product.quantity;
