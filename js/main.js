@@ -102,25 +102,27 @@ function showCategories() {
   let listProducts = document.querySelector(".list-product");
 
   // Loop through each category object in productCategories
-  productCategories.forEach((categoryObj) => {
-    // Create a <li> element for each category
-    let liElement = document.createElement("li");
+  if(listProducts){
 
-    // Create an <a> element inside the <li> element
-    let aElement = document.createElement("a");
-    aElement.className = "element-product"; // Assign the class name
-    aElement.setAttribute("data-category-id", categoryObj.id); // Set a custom attribute to store the category ID
-    aElement.textContent = categoryObj.category; // Set the category name as the link text
-
-    // Append the <a> element inside the <li> element
-    liElement.appendChild(aElement);
-
-    // Append the <li> element to the list container
-    listProducts.appendChild(liElement);
-  });
-
-  // Add click event listeners to each <a> element with the class 'element-product'
-  document.querySelectorAll(".element-product").forEach((element) => {
+    productCategories.forEach((categoryObj) => {
+      // Create a <li> element for each category
+      let liElement = document.createElement("li");
+      
+      // Create an <a> element inside the <li> element
+      let aElement = document.createElement("a");
+      aElement.className = "element-product"; // Assign the class name
+      aElement.setAttribute("data-category-id", categoryObj.id); // Set a custom attribute to store the category ID
+      aElement.textContent = categoryObj.category; // Set the category name as the link text
+      
+      // Append the <a> element inside the <li> element
+      liElement.appendChild(aElement);
+      
+      // Append the <li> element to the list container
+      listProducts.appendChild(liElement);
+    });
+    
+    // Add click event listeners to each <a> element with the class 'element-product'
+    document.querySelectorAll(".element-product").forEach((element) => {
     element.addEventListener("click", function (event) {
       event.preventDefault(); // Prevent the default link behavior
       let categoryId = parseInt(this.getAttribute("data-category-id")); // Get the category ID from the data attribute
@@ -128,16 +130,18 @@ function showCategories() {
     });
   });
 }
+}
 
 /* --------------------------------------------------------- ShowProducts -------------------------------------------------- */
 
 function showProducts(categoryId) {
   // Clear the card container before adding new ones
   let containerCards = document.getElementById("container-cards");
-  containerCards.innerHTML = "";
-
-  // Filter the products to get only those that belong to the selected category
-  let productsByCategory = products.filter(
+  if(containerCards){
+    containerCards.innerHTML = "";
+    
+    // Filter the products to get only those that belong to the selected category
+    let productsByCategory = products.filter(
     (product) => product.category === categoryId
   );
 
@@ -148,29 +152,29 @@ function showProducts(categoryId) {
     cardDiv.className = "card animacion border-green align-items-center";
     cardDiv.style.width = "18rem";
     cardDiv.id = `cardDiv-${product.id}`;
-
+    
     // Create the image element and set it up
     let cardImg = document.createElement("img");
     cardImg.src = `${product.img}`;
     cardImg.className = "card-img-top";
-
+    
     // Create the container for the card body
     let cardBodyDiv = document.createElement("div");
     cardBodyDiv.className = "card-body border-top-black m-2";
-
+    
     // Create the card title
     let h6Element = document.createElement("h6");
     h6Element.textContent = `${product.name}`;
-
+    
     // Create the container for the increment/decrement buttons and the quantity input
     let numberInputDiv = document.createElement("div");
     numberInputDiv.className = "number-input m-1";
-
+    
     // Create the button to decrement the quantity value
     let decrementButton = document.createElement("button");
     decrementButton.id = `btn-decrement-${product.id}`;
     decrementButton.textContent = "-";
-
+    
     // Create the input to enter the product quantity
     let quantityInput = document.createElement("input");
     quantityInput.type = "number";
@@ -405,11 +409,13 @@ let informacion = [];
 
 // cuando se hace click en el boton
 if(btnEnviar){
-
+  
+  
   btnEnviar.addEventListener("click", (e) => {
-    // prevenis que se recarge la pag
+   // prevenis que se recarge la pag
     e.preventDefault();
     let inputs = document.querySelectorAll(".inputContact");
+    
     let contador = 0;
     inputs.forEach((input) => {
       let value = input.value;
@@ -432,6 +438,7 @@ if(btnEnviar){
       let blob = new Blob([informacion], { type: "text/plain;charset=utf-8" });
       // form.txt es el nombre del archivo que se descarga podes poner pepe.text
       saveAs(blob, "contact-form.txt");
+      informacion = [];
     }
   });
 }
