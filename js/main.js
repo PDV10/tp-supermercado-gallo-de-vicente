@@ -435,6 +435,7 @@ if(btnEnviar){
       let blob = new Blob([informacion], { type: "text/plain;charset=utf-8" });
       // form.txt es el nombre del archivo que se descarga podes poner pepe.text
       saveAs(blob, "contact-form.txt");
+      informacion = [];
     }
   });
 }
