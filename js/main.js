@@ -266,7 +266,7 @@ function showProducts(categoryId) {
 }
 
   showCategories();
-  showProducts(productCategories[6].id);
+  showProducts(productCategories[0].id);
 
 /* --------------------------------------------------------- CART ----------------------------------------------------------- */
 
