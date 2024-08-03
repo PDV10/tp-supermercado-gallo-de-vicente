@@ -135,133 +135,134 @@ function showCategories() {
 function showProducts(categoryId) {
   // Clear the card container before adding new ones
   let containerCards = document.getElementById("container-cards");
+    if(containerCards) {
+    let lastLi = document.querySelector(".li-active");
+    if(lastLi) lastLi.classList.remove("li-active");
+    
+    let liCurrent = document.getElementById(`category-${categoryId}`);
+    liCurrent.classList.add("li-active");  
+    if(containerCards){
+      containerCards.innerHTML = "";
 
-  let lastLi = document.querySelector(".li-active");
-  if(lastLi) lastLi.classList.remove("li-active");
-  
-  let liCurrent = document.getElementById(`category-${categoryId}`);
-  liCurrent.classList.add("li-active");  
-  if(containerCards){
-    containerCards.innerHTML = "";
+      // Filter the products to get only those that belong to the selected category
+      let productsByCategory = products.filter(
+        (product) => product.category === categoryId
+      );
 
-    // Filter the products to get only those that belong to the selected category
-    let productsByCategory = products.filter(
-      (product) => product.category === categoryId
-    );
-
-    // Iterate over the filtered products and create the cards
-    productsByCategory.forEach((product) => {
-      // Create the main container for the card
-      let cardDiv = document.createElement("div");
-      cardDiv.className = "card animacion border-green align-items-center";
-      cardDiv.style.width = "18rem";
-      cardDiv.id = `cardDiv-${product.id}`;
-
-      // Create the image element and set it up
-      let cardImg = document.createElement("img");
-      cardImg.src = `${product.img}`;
-      cardImg.className = "card-img-top";
-
-      // Create the container for the card body
-      let cardBodyDiv = document.createElement("div");
-      cardBodyDiv.className = "card-body border-top-black m-2";
-
-      // Create the card title
-      let h6Element = document.createElement("h6");
-      h6Element.textContent = `${product.name}`;
-
-      // Create the container for the increment/decrement buttons and the quantity input
-      let numberInputDiv = document.createElement("div");
-      numberInputDiv.className = "number-input m-1";
-
-      // Create the button to decrement the quantity value
-      let decrementButton = document.createElement("button");
-      decrementButton.id = `btn-decrement-${product.id}`;
-      decrementButton.textContent = "-";
-
-      // Create the input to enter the product quantity
-      let quantityInput = document.createElement("input");
-      quantityInput.type = "number";
-      quantityInput.value = 1;
-      quantityInput.id = `input-quantity-${product.id}`;
-      quantityInput.min = 0;
-      quantityInput.className = "input-quantity-product";
-
-      // Create the button to increment the quantity value
-      let incrementButton = document.createElement("button");
-      incrementButton.id = `btn-increment-${product.id}`;
-      incrementButton.textContent = "+";
-
-      // Create the paragraph element to display the product price
-      let pElement = document.createElement("p");
-      pElement.className = "card-product-price m-1";
-      pElement.textContent = `$${product.price}`;
-      pElement.id = `price-${product.id}`;
-
-      // Create the purchase button
-      let addToCartButton = document.createElement("button");
-      addToCartButton.type = "button";
-      addToCartButton.className = "btn-addToCart";
-      addToCartButton.id = product.id;
-      addToCartButton.textContent = "Add to Cart";
-
-      if(product.stock === 0){
-        addToCartButton.setAttribute("disabled",true);
-        quantityInput.value = 0;
-        pElement.innerText = "Sin Stock"
-        
-        cardDiv.classList.remove("animacion");
-        cardDiv.classList.add("withOutStock");
-      }
-
-      // Append the elements to the DOM in the correct order
-      numberInputDiv.appendChild(decrementButton);
-      numberInputDiv.appendChild(quantityInput);
-      numberInputDiv.appendChild(incrementButton);
-
-      cardBodyDiv.appendChild(h6Element);
-      cardBodyDiv.appendChild(numberInputDiv);
-      cardBodyDiv.appendChild(pElement);
-      cardBodyDiv.appendChild(addToCartButton);
-
-      cardDiv.appendChild(cardImg);
-      cardDiv.appendChild(cardBodyDiv);
-
-      containerCards.appendChild(cardDiv);
-
-    });
-
-    // Assign click events to the increment and decrement buttons
+      // Iterate over the filtered products and create the cards
       productsByCategory.forEach((product) => {
-        let inputQuantity = document.getElementById(`input-quantity-${product.id}`);
+        // Create the main container for the card
+        let cardDiv = document.createElement("div");
+        cardDiv.className = "card animacion border-green align-items-center";
+        cardDiv.style.width = "18rem";
+        cardDiv.id = `cardDiv-${product.id}`;
 
-        let btnDecrement = document.getElementById(`btn-decrement-${product.id}`);
-        btnDecrement.addEventListener("click", (e) => {
-          e.preventDefault();
-          let currentValue = parseInt(inputQuantity.value);
-          if (currentValue > 0) inputQuantity.value = currentValue - 1;
-        });
-        
-        let btnIncrement = document.getElementById(`btn-increment-${product.id}`);
-        btnIncrement.addEventListener("click", () => {
-          let currentValue = parseInt(inputQuantity.value);
-          if(currentValue+1 <= product.stock){
-            inputQuantity.value = currentValue + 1;
-          }else{
-            console.log("Maximo stock alcanzado");
-          }
-        });
+        // Create the image element and set it up
+        let cardImg = document.createElement("img");
+        cardImg.src = `${product.img}`;
+        cardImg.className = "card-img-top";
 
-        inputQuantity.addEventListener("keyup",() =>{
-          let value = inputQuantity.value;
-          if(value > product.stock){
-            inputQuantity.value = product.stock;
-          }
-        })
+        // Create the container for the card body
+        let cardBodyDiv = document.createElement("div");
+        cardBodyDiv.className = "card-body border-top-black m-2";
 
+        // Create the card title
+        let h6Element = document.createElement("h6");
+        h6Element.textContent = `${product.name}`;
+
+        // Create the container for the increment/decrement buttons and the quantity input
+        let numberInputDiv = document.createElement("div");
+        numberInputDiv.className = "number-input m-1";
+
+        // Create the button to decrement the quantity value
+        let decrementButton = document.createElement("button");
+        decrementButton.id = `btn-decrement-${product.id}`;
+        decrementButton.textContent = "-";
+
+        // Create the input to enter the product quantity
+        let quantityInput = document.createElement("input");
+        quantityInput.type = "number";
+        quantityInput.value = 1;
+        quantityInput.id = `input-quantity-${product.id}`;
+        quantityInput.min = 0;
+        quantityInput.className = "input-quantity-product";
+
+        // Create the button to increment the quantity value
+        let incrementButton = document.createElement("button");
+        incrementButton.id = `btn-increment-${product.id}`;
+        incrementButton.textContent = "+";
+
+        // Create the paragraph element to display the product price
+        let pElement = document.createElement("p");
+        pElement.className = "card-product-price m-1";
+        pElement.textContent = `$${product.price}`;
+        pElement.id = `price-${product.id}`;
+
+        // Create the purchase button
+        let addToCartButton = document.createElement("button");
+        addToCartButton.type = "button";
+        addToCartButton.className = "btn-addToCart";
+        addToCartButton.id = product.id;
+        addToCartButton.textContent = "Add to Cart";
+
+        if(product.stock === 0){
+          addToCartButton.setAttribute("disabled",true);
+          quantityInput.value = 0;
+          pElement.innerText = "Sin Stock"
+          
+          cardDiv.classList.remove("animacion");
+          cardDiv.classList.add("withOutStock");
+        }
+
+        // Append the elements to the DOM in the correct order
+        numberInputDiv.appendChild(decrementButton);
+        numberInputDiv.appendChild(quantityInput);
+        numberInputDiv.appendChild(incrementButton);
+
+        cardBodyDiv.appendChild(h6Element);
+        cardBodyDiv.appendChild(numberInputDiv);
+        cardBodyDiv.appendChild(pElement);
+        cardBodyDiv.appendChild(addToCartButton);
+
+        cardDiv.appendChild(cardImg);
+        cardDiv.appendChild(cardBodyDiv);
+
+        containerCards.appendChild(cardDiv);
 
       });
-      asingEventClickToButtons();
+
+      // Assign click events to the increment and decrement buttons
+        productsByCategory.forEach((product) => {
+          let inputQuantity = document.getElementById(`input-quantity-${product.id}`);
+
+          let btnDecrement = document.getElementById(`btn-decrement-${product.id}`);
+          btnDecrement.addEventListener("click", (e) => {
+            e.preventDefault();
+            let currentValue = parseInt(inputQuantity.value);
+            if (currentValue > 0) inputQuantity.value = currentValue - 1;
+          });
+          
+          let btnIncrement = document.getElementById(`btn-increment-${product.id}`);
+          btnIncrement.addEventListener("click", () => {
+            let currentValue = parseInt(inputQuantity.value);
+            if(currentValue+1 <= product.stock){
+              inputQuantity.value = currentValue + 1;
+            }else{
+              console.log("Maximo stock alcanzado");
+            }
+          });
+
+          inputQuantity.addEventListener("keyup",() =>{
+            let value = inputQuantity.value;
+            if(value > product.stock){
+              inputQuantity.value = product.stock;
+            }
+          })
+
+
+        });
+        asingEventClickToButtons();
+      }
     }
 }
 
