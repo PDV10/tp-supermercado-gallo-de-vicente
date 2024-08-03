@@ -147,8 +147,8 @@ li a.nav-link:hover{
 }
 
 .cart-icon svg{
-    width: 35px;
-    height: 30px;
+    width: 35px !important;
+    height: 30px!important;
     color: rgba(61, 61, 61, 0.847);
 }
 
@@ -385,11 +385,26 @@ svg.shop-Cart{
     font-size: 15px;
 }
 
+.btn-detele{
+    border: none;
+    margin-left: 5px;
+    background-color: transparent;
+}
+
+.btn-detele:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: transparent;
+  color: red;
+}
+
+
 .contact-info h4{
     color: #636363;
     font-family: var(--fontNunito);
     margin: 0;
     padding: 0;
+    font-size: 20px;
 }
 
 .icon-contact{

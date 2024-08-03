@@ -379,15 +379,6 @@ function showCartProducts(){
     productNameElement.className = "product-name";
     productNameElement.textContent = product.name;
 
-    // Create a br element for spacing
-
-/* 
-        
-            <div class="img-cart">
-              <img src="./assets/leche.png" alt="">
-            </div>
-          </li> */
-
     // Create a small element for the product price and quantity
     let productInfoElement = document.createElement("p");
     productInfoElement.textContent = `Price: $${product.price.toFixed(2)} x ${product.quantity}`;
@@ -412,9 +403,23 @@ function showCartProducts(){
     
     imgContainer.appendChild(img);
 
+    let btnDelete = document.createElement("button");
+
+    btnDelete.classList.add("btn-detele")
+    btnDelete.id = product.id;
+    btnDelete.innerText = "X";
+
+    /* let span = document.createElement("span");
+    span.innerText = "X";
+       
+    
+    btnDelete.appendChild(span)
+    */
+
     // Append the div to the li
     liElement.appendChild(divElement);
     liElement.appendChild(imgContainer);
+    liElement.appendChild(btnDelete) 
 
     // Calculate the total cost
     total += product.price * product.quantity;
@@ -429,6 +434,38 @@ function showCartProducts(){
   // Append the ul and p to the modal body
   modalBodyDiv.appendChild(ulElement);
   modalBodyDiv.appendChild(pElement);
+  
+  deleteItem()
+}
+
+function deleteItem(){
+
+
+    let btnDetele = document.querySelectorAll(".btn-detele");
+    let cartLengthIcon = document.getElementById("itemsInCart");
+    if (btnDetele) {
+    
+    btnDetele.forEach(btn => {
+      btn.addEventListener("click", ()=>{
+        let btnId = parseInt(btn.getAttribute("id"));
+        console.log(btnId);
+        
+        let itemsCart = cart.filter( item => item.id != btnId);
+   
+       cart = [];
+
+        itemsCart.forEach(itemCart => {
+          cart.push(itemCart)
+          
+        });
+        
+        showCartProducts();
+      
+        
+        
+      })
+    })
+  }
 }
 
 
