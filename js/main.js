@@ -340,7 +340,6 @@ function addProductToCart(id){
     card.classList.add("withOutStock");
     
   }
-  /*  console.log(cart); */
 }
 
 function showCartProducts(){
@@ -456,7 +455,7 @@ function deleteItem(){
 
         itemsCart.forEach(itemCart => {
           cart.push(itemCart)
-          
+          cartLengthIcon.innerText = cart.length;
         });
         
         showCartProducts();
