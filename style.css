@@ -385,6 +385,25 @@ svg.shop-Cart{
     font-size: 15px;
 }
 
+.contact-info h4{
+    color: #636363;
+    font-family: var(--fontNunito);
+    margin: 0;
+    padding: 0;
+}
+
+.icon-contact{
+    width: 33px;
+    height: 30px;
+    color: var(--green);
+}
+
+.icon-contact-form{
+    width: 27px;
+    height: 25px;
+    color: var(--green);
+}
+
 .btn-addToCart:hover{
     color: var(--green);
     font-weight: 600;
@@ -476,7 +495,7 @@ li a.element-product:hover {
 .contact-form h2 {
     margin-bottom: 20px;
     font-size: 24px;
-    color: var(--green);
+    color: #636363;
     text-align: center;
 }
 
@@ -484,7 +503,7 @@ li a.element-product:hover {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: var(--lightGreen);
+    color: #636363;
 }
 
 .contact-form input,
@@ -511,7 +530,7 @@ li a.element-product:hover {
     background-color: var(--lightGreen);
     border: none;
     border-radius: 8px;
-    color: white;
+    color: #636363;
     font-size: 16px;
     cursor: pointer;
 }
