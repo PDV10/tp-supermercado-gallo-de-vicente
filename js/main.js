@@ -294,31 +294,29 @@ function asingEventClickToButtons(){
 
 function addProductToCart(id){
   // Get the quantity of the input quantity
-  let quantity = document.querySelector(`#input-quantity-${id}`)
+  let quantityInput = document.querySelector(`#input-quantity-${id}`);
   // Look for a product on the array object who id is equals to parameter id
   let prod = products.find(product => product.id == id);
-
-  if(cart.length > 0){
-    let pInfoCart = document.querySelector("#cart-message");
-  }
 
   // Create product to add to cart
   let productToAdd = {
     "id": id,
     "name": prod.name,
     "price": prod.price,
-    "quantity": quantity.value,
+    "quantity": parseInt(quantityInput.value),
     "category": prod.category,
     "img": prod.img
   }
 
   // add product tu cart
-  if(prod.stock > 0 && quantity.value<=prod.stock ){
+  if(prod.stock > 0 && quantityInput.value<=prod.stock ){
 
-    cart.push(productToAdd);
-    
+    let isInTheCart = cart.find(product => product.id == prod.id);
+
+    if(isInTheCart) isInTheCart.quantity += productToAdd.quantity;
+    else cart.push(productToAdd);    
     // update stock in object
-    prod.stock -= quantity.value;
+    prod.stock -= quantityInput.value;
     
     // Get Dom element to show quantity of items inside the cart
     let cartLengthIcon = document.getElementById("itemsInCart");
@@ -328,14 +326,15 @@ function addProductToCart(id){
       cartLengthIcon.classList.remove("d-none");
     }
     showCartProducts();
-    quantity.value = 1;
+    quantityInput.value = 1;
+
   }else{
     let card = document.getElementById(`cardDiv-${id}`);
     let cardPrice = document.getElementById(`price-${id}`);
     let btnCard = document.getElementById(`${id}`);
     btnCard.setAttribute("disabled",true);
     cardPrice.innerText = "Sin Stock"
-    quantity.value = 0;
+    quantityInput.value = 0;
     card.classList.remove("animacion");
     card.classList.add("withOutStock");
     
@@ -346,7 +345,7 @@ function showCartProducts(){
   // Get the modal body div
   let modalBodyDiv = document.querySelector(".modal-body");
   modalBodyDiv.innerHTML = "";
-
+  
   // Get the cart product list ul
   let ulElement = document.getElementById("list-cart-products");
   // Get the p element to display the total 
@@ -408,13 +407,6 @@ function showCartProducts(){
     btnDelete.id = product.id;
     btnDelete.innerText = "X";
 
-    /* let span = document.createElement("span");
-    span.innerText = "X";
-       
-    
-    btnDelete.appendChild(span)
-    */
-
     // Append the div to the li
     liElement.appendChild(divElement);
     liElement.appendChild(imgContainer);
@@ -438,30 +430,22 @@ function showCartProducts(){
 }
 
 function deleteItem(){
-
-
     let btnDetele = document.querySelectorAll(".btn-detele");
     let cartLengthIcon = document.getElementById("itemsInCart");
     if (btnDetele) {
     
     btnDetele.forEach(btn => {
       btn.addEventListener("click", ()=>{
-        let btnId = parseInt(btn.getAttribute("id"));
-        console.log(btnId);
-        
+        let btnId = parseInt(btn.getAttribute("id"));        
         let itemsCart = cart.filter( item => item.id != btnId);
    
-       cart = [];
-
-        itemsCart.forEach(itemCart => {
-          cart.push(itemCart)
-          cartLengthIcon.innerText = cart.length;
-        });
+        cart = itemsCart;
+        cartLengthIcon.innerText = cart.length;
         
+        if(cart.length === 0) {
+          cartLengthIcon.classList.add('d-none');
+        }
         showCartProducts();
-      
-        
-        
       })
     })
   }
